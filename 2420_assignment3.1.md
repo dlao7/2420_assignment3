@@ -37,12 +37,12 @@ cp -r /.ssh /home/<username>
 chown -R <username>:<username> /home/<username>/.ssh
 ```
 
-### Log out as root user
+**Log out** as root user
 ```powershell
 exit
 ```
 
-### Connect as the new user
+**Connect** as the new user
 ```powershell
 ssh -i <path to ssh key> <username>@<host-ip-address>
 ```
@@ -76,7 +76,7 @@ exit
 **Confirm** that you cannot connect to server as root.
 
 ```powershell
-ssh -i .ssh/do-key root@<host-ip-address>
+ssh -i <path to ssh key> root@<host-ip-address>
 
 Should give error message:
 root@<host-ip-address>: Permission denied (publickey).
@@ -109,24 +109,24 @@ Sample code for index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>2420</title>
- <style>
- body {
- display: flex;
- align-items: center;
- justify-content: center;
- height: 100vh;
- margin: 0;
- }
- h1 {
- text-align: center;
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2420</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        } 
+    </style>
 </head>
 <body>
- <h1>Hello, World</h1>
+    <h1>Hello, World</h1>
 </body>
 </html>
 ```
@@ -139,20 +139,20 @@ In vim, create a new file called my-site.conf and save it with the following cod
 
 ```vim
 server {
- listen 80;
- listen [::]:80;
+  listen 80;
+  listen [::]:80;
   
- root /var/www/my-site;
+  root /var/www/my-site;
   
- index index.html index.htm;
+  index index.html index.htm;
   
- server_name _;
+  server_name _;
   
- location / {
- # First attempt to serve request as file, then
- # as directory, then fall back to displaying a 404.
- try_files $uri $uri/ =404;
- }
+  location / {
+  # First attempt to serve request as file, then
+  # as directory, then fall back to displaying a 404.
+  try_files $uri $uri/ =404;
+  }
 }
 ```
 To **enable** a site to be served by the web server, you should add a symbolic link in sites-enabled to the configuration file in sites-available.
